@@ -1,0 +1,22 @@
+```json
+{
+  "name": "Cult and Clay App Concept Pitch",
+  "short_name": "Cult&Clay",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#F9F6F0",
+  "theme-color": "#4A3E3D",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://placeholder.com",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://placeholder.com",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
