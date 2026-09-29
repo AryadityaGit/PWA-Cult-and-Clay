@@ -27,3 +27,6 @@ This repository acts as a live sandboxed pitch to demonstrate how introducing **
    git clone https://github.com
    ```
 2. Because modern service workers require a secure context layout, run a fast local pipeline (like VS Code Live Server) to verify installation actions.
+
+[⚙️`manifest.json`
+ It informs the operating system about the splash screens, branding colors, and app layout configurations when the web app gets added to the home screen.]
