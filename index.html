@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cult & Clay Concept</title>
+    <title>Cult & Clay Concept Sandbox</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4A3E3D">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,13 +30,14 @@
             background-color: var(--bg-color);
             color: var(--text);
             line-height: 1.6;
-            padding: 20px;
+            padding: 15px;
+            padding-bottom: 60px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
-            padding: 20px 0;
+            margin-bottom: 25px;
+            padding: 15px 0;
             border-bottom: 1px solid var(--accent);
         }
 
@@ -45,6 +46,7 @@
             letter-spacing: 4px;
             color: var(--primary);
             text-transform: uppercase;
+            font-size: 1.8rem;
         }
 
         .pitch-container {
@@ -52,208 +54,317 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
+        }
+
+        .section-heading {
+            text-align: center;
+            color: #777;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            border-bottom: 1px dashed #DDD;
+            padding-bottom: 5px;
         }
 
         .feature-card {
             background: var(--card-bg);
             border: 1px solid #E5DEC9;
             border-radius: 8px;
-            padding: 24px;
+            padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
         .feature-card h2 {
             font-weight: 400;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-left: 4px solid var(--accent);
             padding-left: 10px;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
         }
 
-        /* Cart & PWA Trigger Area */
-        .cart-action-zone {
-            margin-top: 20px;
-            text-align: center;
-            padding-top: 15px;
-            border-top: 1px dashed #DDD;
+        p.desc {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 15px;
         }
 
-        .primary-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-            transition: opacity 0.2s;
-        }
+        /* 1. Map & Ledger */
+        .mock-map { background: #EAE3D2; height: 220px; border-radius: 6px; position: relative; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--primary); }
+        .map-pin { position: absolute; background: var(--primary); color: white; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; }
+        #pin-bengal { top: 45%; left: 70%; }
+        #pin-bihar { top: 35%; left: 55%; }
+        #pin-tamil { top: 75%; left: 45%; }
+        .map-details { background: var(--bg-color); padding: 12px; border-radius: 6px; min-height: 80px; margin-top: 12px; font-size: 0.95rem; }
+        
+        .ledger-input-box { display: flex; gap: 8px; margin-top: 12px; }
+        .ledger-input { flex: 1; padding: 10px; border: 1px solid var(--accent); border-radius: 4px; font-size: 0.9rem; background: var(--bg-color); }
+        .sm-btn { background: var(--primary); color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; }
 
-        .primary-btn:hover { opacity: 0.9; }
+        /* 2. Audio & Visual Tactility */
+        .tactile-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .product-preview-box { position: relative; background: #ECE7E1; padding: 20px; border-radius: 6px; text-align: center; overflow: hidden; cursor: crosshair; }
+        .zoom-img { width: 100%; max-width: 150px; transition: transform 0.3s ease; }
+        .product-preview-box:hover .zoom-img { transform: scale(1.8); }
+        .tooltip-text { font-size: 0.8rem; background: var(--primary); color: white; padding: 6px; border-radius: 4px; margin-top: 10px; display: inline-block; }
+        
+        .audio-player-box { background: var(--bg-color); padding: 15px; border-radius: 6px; text-align: center; }
+        .audio-btn { background: transparent; border: 1px solid var(--primary); padding: 8px 16px; border-radius: 20px; cursor: pointer; color: var(--primary); font-weight: 500; font-size: 0.85rem; margin-top: 8px; }
 
-        /* Custom Modern Modal for PWA prompt */
-        .pwa-modal {
-            display: none;
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            background: white;
-            padding: 25px;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
-            z-index: 1000;
-            text-align: center;
-            animation: slideUp 0.3s ease-out;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; bottom: 0; left: 0; right: 0;
-            background: rgba(0,0,0,0.4);
-            z-index: 999;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            color: #777;
-            margin-top: 10px;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        /* Wardrobe Layout */
-        .wardrobe-container { display: flex; flex-direction: column; gap: 20px; }
-        .selector-group h4 { margin-bottom: 8px; color: #666; font-size: 0.85rem; text-transform: uppercase; }
-        .item-thumb { display: inline-block; padding: 8px 14px; background: white; border: 1px solid #DDD; margin: 0 6px 8px 0; cursor: pointer; border-radius: 4px; }
+        /* 3. Quiz & Capsule Builder */
+        .quiz-box { background: var(--bg-color); padding: 18px; border-radius: 6px; text-align: center; }
+        .quiz-options { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+        .quiz-btn { background: white; border: 1px solid var(--accent); padding: 10px; border-radius: 6px; cursor: pointer; color: var(--primary); font-size: 0.95rem; }
+        
+        .wardrobe-container { display: flex; flex-direction: column; gap: 15px; }
+        .selector-group h4 { margin-bottom: 6px; color: #666; font-size: 0.8rem; text-transform: uppercase; }
+        .item-thumb { display: inline-block; padding: 6px 12px; background: white; border: 1px solid #DDD; margin: 0 4px 6px 0; cursor: pointer; border-radius: 4px; font-size: 0.85rem; }
         .item-thumb.active { border-color: var(--primary); background: var(--primary); color: white; }
-        .wardrobe-canvas { height: 160px; background: #FDFDFD; border: 1px solid #E5DEC9; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-        .preview-layer { font-size: 1rem; font-weight: 500; padding: 10px; border-radius: 4px; width: 90%; text-align: center; }
+        .wardrobe-canvas { height: 140px; background: #FDFDFD; border: 1px solid #E5DEC9; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+        .preview-layer { font-size: 0.95rem; font-weight: 500; padding: 8px; border-radius: 4px; width: 85%; text-align: center; }
         #top-layer { background: #E8E2D5; color: var(--primary); }
         #bottom-layer { background: #D9D2C5; color: var(--primary); }
+        .primary-btn { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 4px; font-weight: 600; cursor: pointer; width: 100%; font-size: 1rem; margin-top: 10px; }
+
+        /* 4. Community Dashboards */
+        .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .dash-box { background: var(--bg-color); padding: 15px; border-radius: 6px; }
+        .vote-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 8px; background: white; border-radius: 4px; border: 1px solid #E5DEC9; font-size: 0.9rem; }
+        
+        /* Popup Modal Drawer */
+        .pwa-modal { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 25px; border-top-left-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 -5px 25px rgba(0,0,0,0.15); z-index: 1000; text-align: center; animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .modal-overlay { display: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.4); z-index: 999; }
+        .close-modal { background: none; border: none; color: #777; margin-top: 15px; cursor: pointer; text-decoration: underline; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Cult & Clay</h1>
-        <p>Conscious Capsule Engineering</p>
+        <p>Complete Digital Strategy Sandbox</p>
     </header>
 
     <div class="pitch-container">
-        <!-- CAPSULE BUILDER -->
+        
+        <div class="section-heading">✨ Heritage Connection</div>
+        
+        <!-- CONCEPT 1: PROVENANCE MAP -->
         <div class="feature-card">
-            <h2>Capsule Wardrobe Builder</h2>
-            <div class="wardrobe-container">
-                <div class="wardrobe-panel">
-                    <div class="selector-group">
-                        <h4>Select Top</h4>
-                        <div class="item-thumb active" onclick="changeCanvas('top', 'Nira Organic Khadi Kurta', '#E8E2D5', this)">Nira Khadi Kurta</div>
-                        <div class="item-thumb" onclick="changeCanvas('top', 'Vanya Crop Over-Shirt', '#EFEBE4', this)">Vanya Over-Shirt</div>
-                    </div>
-                    <div class="selector-group">
-                        <h4>Select Bottom</h4>
-                        <div class="item-thumb active" onclick="changeCanvas('bottom', 'Terracotta Everyday Trousers', '#D9D2C5', this)">Everyday Trousers</div>
-                        <div class="item-thumb" onclick="changeCanvas('bottom', 'South Cotton Lounge Pants', '#C4B9A3', this)">Lounge Pants</div>
-                    </div>
+            <h2>Interactive Transparency Map</h2>
+            <p class="desc">Traces textiles directly back to local artisan production clusters.</p>
+            <div class="map-wrapper">
+                <div class="mock-map">
+                    <div class="map-pin" id="pin-bengal" onclick="showProvince('bengal')">📍</div>
+                    <div class="map-pin" id="pin-bihar" onclick="showProvince('bihar')">📍</div>
+                    <div class="map-pin" id="pin-tamil" onclick="showProvince('tamil')">📍</div>
                 </div>
-                
-                <div class="wardrobe-canvas">
-                    <div id="top-layer" class="preview-layer">Nira Organic Khadi Kurta</div>
-                    <div id="bottom-layer" class="preview-layer">Terracotta Everyday Trousers</div>
-                </div>
-
-                <div class="cart-action-zone">
-                    <button class="primary-btn" onclick="triggerCartFlow()">Add Capsule Selection to Cart</button>
+                <div class="map-details" id="map-details-box">
+                    <h3>Tap a pin 📍 on the map</h3>
+                    <p>Discover regional histories and real footprint calculations.</p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- BACKGROUND BLUR OVERLAY -->
-    <div class="modal-overlay" id="overlay" onclick="closePwaModal()"></div>
+        <!-- CONCEPT 2: MEET YOUR WEAVER LEDGER -->
+        <div class="feature-card">
+            <h2>"Meet Your Weaver" Ledger</h2>
+            <p class="desc">Simulates typing in a physical garment batch tag code to find its maker.</p>
+            <div class="ledger-box">
+                <div class="ledger-input-box">
+                    <input type="text" id="ledgerCode" class="ledger-input" placeholder="Try entering batch code: CC-703">
+                    <button class="sm-btn" onclick="checkLedger()">Trace</button>
+                </div>
+                <div id="ledgerResult" style="margin-top:10px; font-size:0.9rem;"></div>
+            </div>
+        </div>
 
-    <!-- SMART SMARTPHONE SMART PROMPT INTERFACE -->
-    <div class="pwa-modal" id="pwaModal">
-        <h3 style="color: var(--primary); margin-bottom: 8px;">🛒 Items Added to Cart!</h3>
-        <p id="pwa-instruction-text" style="font-size: 0.95rem; color: #444; margin-bottom: 20px;">
-            Would you like to save this custom capsule to your phone's home screen for quick offline order tracking?
-        </p>
-        <button class="primary-btn" id="modal-action-btn" onclick="executePwaInstall()">Save to Home Screen</button>
-        <br>
-        <button class="close-modal" onclick="closePwaModal()">No thanks, continue shopping</button>
-    </div>
+        <div class="section-heading">🧵 Tactility Alternative</div>
 
-    <script>
-        // Service Worker setup loop
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
-            });
-        }
+        <!-- CONCEPT 3 & 4: MACRO HOVER-ZOOM & AUDIO TEXTURES -->
+        <div class="feature-card">
+            <h2>Digital Tactility Suite</h2>
+            <div class="tactile-grid">
+                <div class="product-preview-box">
+                    <p style="font-size:0.8rem; color:#888; margin-bottom:5px;">Hover / Touch hold to experience Macro Zoom:</p>
+                    <img src="https://placeholder.com Bengal+Khadi" class="zoom-img" alt="Fabric Structure">
+                    <br>
+                    <div class="tooltip-text">Authentic, uneven yarn anomalies of hand-spun Khadi loom batches.</div>
+                </div>
+                <div class="audio-player-box">
+                    <h4>Ambient Audio Textures</h4>
+Use code with caution.
+Brings the sensory rhythm of standard traditional production loops to life.
+▶️ Play Rhythmic Handloom clicking sound
 
-        // Intercept native prompt configurations
-        let deferredPrompt = null;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e; // Store event data for later use
-        });
 
-        // Detect if user is accessing from iOS / iPhone
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+🛍️ Intentional Purchasing
+The "Slow Living" Fit Finder
 
-        function triggerCartFlow() {
-            // Show custom engagement drawer instantly on successful cart entry
-            document.getElementById('overlay').style.display = 'block';
-            const modal = document.getElementById('pwaModal');
-            modal.style.display = 'block';
+How do you like traditional handwoven cotton to sit against your skin?
 
-            // Personalise message copy specifically tailored to Apple environments if detected
-            if (isIOS) {
-                document.getElementById('pwa-instruction-text').innerHTML = 
-                    "Track this order seamlessly! Tap the <strong>Share icon</strong> <span style='font-size:1.2rem;'>⎋</span> at the bottom of Safari, then choose <strong>'Add to Home Screen'</strong>.";
-                document.getElementById('modal-action-btn').style.display = 'none'; // Hide native trigger
-            }
-        }
+Snug & Structured
+With Breathing Room
+Completely Voluminous & Flowing
 
-        function executePwaInstall() {
-            closePwaModal();
-            // Fire native installation routine on Android environments
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
-            } else {
-                alert("Capsule saved to browser storage! Pin it via browser settings.");
-            }
-        }
 
-        function closePwaModal() {
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('pwaModal').style.display = 'none';
-        }
+Capsule Wardrobe Builder
 
-        function changeCanvas(layer, name, color, element) {
-            if (layer === 'top') {
-                document.getElementById('top-layer').innerText = name;
-                document.getElementById('top-layer').style.backgroundColor = color;
-            } else {
-                document.getElementById('bottom-layer').innerText = name;
-                document.getElementById('bottom-layer').style.backgroundColor = color;
-            }
-            const siblings = element.parentNode.getElementsByClassName('item-thumb');
-            for (let btn of siblings) btn.classList.remove('active');
-            element.classList.add('active');
-        }
-    </script>
-</body>
-</html>
+
+
+Select Silhouette Top
+Nira Khadi Kurta
+Vanya Over-Shirt
+
+
+Select Silhouette Bottom
+Everyday Trousers
+Lounge Pants
+
+Nira Organic Khadi Kurta
+Terracotta Everyday Trousers
+Add Capsule Selection to Cart
+
+
+🌱 Zero-Waste Community
+Community Co-Creation & Longevity Hub
+
+
+Pre-Order & Voting Portal
+Vote on future layout drops to eliminate deadstock fabric waste overhead loops.
+Kala Cotton Slacks IndigoVote (411)
+Oversized Bihar Flax TunicVote (288)
+
+
+Care & Repair Diagnostic Assistant
+Select a situation to get immediate traditional textile longevity advice:
+
+-- Select Fabric Situation --
+My indigo-dyed shirt has faded slightly
+My organic Khadi felt tighter after washing
+
+
+
+
+🛒 Layout Added to Cart!
+
+Would you like to save this custom capsule config right onto your phone's home screen for effortless offline tracking?
+
+Save to Home Screen
+
+
+No thanks, continue shopping
+// PWA background link checking
+if ('serviceWorker' in navigator) {
+window.addEventListener('load', () => {
+navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
+});
+}
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+e.preventDefault();
+deferredPrompt = e;
+});
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+function triggerCartFlow() {
+document.getElementById('overlay').style.display = 'block';
+document.getElementById('pwaModal').style.display = 'block';
+if (isIOS) {
+document.getElementById('pwa-instruction-text').innerHTML =
+"Track your capsule selection instantly! Tap the Share icon ⎋ at the bottom of Safari, then choose 'Add to Home Screen'.";
+document.getElementById('modal-action-btn').style.display = 'none';
+}
+}
+function executePwaInstall() {
+closePwaModal();
+if (deferredPrompt) {
+deferredPrompt.prompt();
+deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+} else {
+alert("Capsule config cached! Pin via browser system shortcuts options.");
+}
+}
+function closePwaModal() {
+document.getElementById('overlay').style.display = 'none';
+document.getElementById('pwaModal').style.display = 'none';
+}
+// Feature 1 Map Mechanics
+const provinceData = {
+bengal: { title: "West Bengal Weaver Loop", mat: "Sun-Dried Bengal Khadi", desc: "Hand-spun on wood charkhas. Uses zero electric grid power, yielding a highly irregular texture that lets skin breathe beautifully." },
+bihar: { title: "Bhagalpur Artisans, Bihar", mat: "Organic Row Linen", desc: "Sourced cleanly from organic structural flax. Saves up to 80% more clean irrigation water compared to commercial-grade cotton lines." },
+tamil: { title: "Temple Towns, Tamil Nadu", mat: "Generational South Cotton", desc: "Woven on robust local frame looms. Optimized directly for hot, high-humidity movement profiles and clean geometric falls." }
+};
+function showProvince(id) {
+const data = provinceData[id];
+document.getElementById('map-details-box').innerHTML = <strong>${data.title}</strong><br><span style="color:var(--accent)">Material: ${data.mat}</span><br>${data.desc};
+}
+// Feature 2 Ledger Search Mock
+function checkLedger() {
+const code = document.getElementById('ledgerCode').value.trim().toUpperCase();
+const box = document.getElementById('ledgerResult');
+if(code === "CC-703") {
+box.innerHTML = "🟢 Artisan Allocated: Woven by Ramesh Murmu's cluster in West Bengal. 
+🕒 Time on Loom: 4 complete days.
+🌱 Footprint: Saved 120L of water via manual charkha spinning cycles.";
+} else {
+box.innerHTML = "ℹ️ Try typing code CC-703 for this demo preview profile tracking loop.";
+}
+}
+// Feature 4 Sound Bite Mock
+let audioContextMock = null;
+function toggleAudioMock(btn) {
+if(btn.innerText.includes("Play")) {
+btn.innerText = "⏸️ Pausing Loom Audio Simulation...";
+// Web Audio API engine loop to sound like an authentic wooden shuttle click
+if(!audioContextMock) audioContextMock = new (window.AudioContext || window.webkitAudioContext)();
+window.loomInterval = setInterval(() => {
+let osc = audioContextMock.createOscillator();
+let gain = audioContextMock.createGain();
+osc.type = 'triangle'; osc.frequency.setValueAtTime(80, audioContextMock.currentTime);
+gain.gain.setValueAtTime(0.3, audioContextMock.currentTime);
+gain.gain.exponentialRampToValueAtTime(0.01, audioContextMock.currentTime + 0.08);
+osc.connect(gain); gain.connect(audioContextMock.destination);
+osc.start(); osc.stop(audioContextMock.currentTime + 0.08);
+}, 750);
+} else {
+btn.innerText = "▶️ Play Rhythmic Handloom clicking sound";
+clearInterval(window.loomInterval);
+}
+}
+// Feature 5 Conversational Quiz Mechanics
+let quizState = 0;
+function nextQuizStep(ans) {
+if (quizState === 0) {
+quizState = 1;
+document.getElementById('quiz-question').innerText = "Choose your baseline height allocation framework:";
+document.getElementById('quiz-options-container').innerHTML = <button class="quiz-btn" onclick="nextQuizStep('Standard')">Petite / Standard Framework</button> <button class="quiz-btn" onclick="nextQuizStep('Tall')">Statuesque / Tall Silhouette Profile</button>;
+} else {
+document.getElementById('quiz-container').innerHTML = <h3>Profile Calculated</h3><p style="margin:10px 0;">Allocated Structure Cut: <strong>Size Medium (Relaxed Comfort Volume Block)</strong></p><button class="quiz-btn" onclick="location.reload()">Reset Fit Finder Quiz</button>;
+}
+}
+// Feature 6 Wardrobe Layer Switcher
+function changeCanvas(layer, name, color, element) {
+if (layer === 'top') {
+document.getElementById('top-layer').innerText = name;
+document.getElementById('top-layer').style.backgroundColor = color;
+} else {
+document.getElementById('bottom-layer').innerText = name;
+document.getElementById('bottom-layer').style.backgroundColor = color;
+}
+const siblings = element.parentNode.getElementsByClassName('item-thumb');
+for (let btn of siblings) btn.classList.remove('active');
+element.classList.add('active');
+}
+// Feature 8 Longevity Troubleshooter
+function runCareDiagnostic(val) {
+const res = document.getElementById('careResult');
+if(val === "fade") {
+res.innerHTML = "💡 Natural Indigo matures gracefully like denim. To lock color lines, wash cold inside-out with a teaspoon of rock salt during its initial rinse cycle.";
+} else if(val === "shrink") {
+res.innerHTML = "💡 Handwoven yarns relax under steam. Do not iron dry; hang dry slightly damp and steam lightly to bring back original loom width dimensions.";
+} else {
+res.innerHTML = "";
+}
+}
