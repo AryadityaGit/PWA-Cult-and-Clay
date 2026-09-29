@@ -256,115 +256,130 @@ Save to Home Screen
 
 
 No thanks, continue shopping
-// PWA background link checking
-if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => {
-navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
-});
-}
-let deferredPrompt = null;
-window.addEventListener('beforeinstallprompt', (e) => {
-e.preventDefault();
-deferredPrompt = e;
-});
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-function triggerCartFlow() {
-document.getElementById('overlay').style.display = 'block';
-document.getElementById('pwaModal').style.display = 'block';
-if (isIOS) {
-document.getElementById('pwa-instruction-text').innerHTML =
-"Track your capsule selection instantly! Tap the Share icon ⎋ at the bottom of Safari, then choose 'Add to Home Screen'.";
-document.getElementById('modal-action-btn').style.display = 'none';
-}
-}
-function executePwaInstall() {
-closePwaModal();
-if (deferredPrompt) {
-deferredPrompt.prompt();
-deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
-} else {
-alert("Capsule config cached! Pin via browser system shortcuts options.");
-}
-}
-function closePwaModal() {
-document.getElementById('overlay').style.display = 'none';
-document.getElementById('pwaModal').style.display = 'none';
-}
-// Feature 1 Map Mechanics
-const provinceData = {
-bengal: { title: "West Bengal Weaver Loop", mat: "Sun-Dried Bengal Khadi", desc: "Hand-spun on wood charkhas. Uses zero electric grid power, yielding a highly irregular texture that lets skin breathe beautifully." },
-bihar: { title: "Bhagalpur Artisans, Bihar", mat: "Organic Row Linen", desc: "Sourced cleanly from organic structural flax. Saves up to 80% more clean irrigation water compared to commercial-grade cotton lines." },
-tamil: { title: "Temple Towns, Tamil Nadu", mat: "Generational South Cotton", desc: "Woven on robust local frame looms. Optimized directly for hot, high-humidity movement profiles and clean geometric falls." }
-};
-function showProvince(id) {
-const data = provinceData[id];
-document.getElementById('map-details-box').innerHTML = <strong>${data.title}</strong><br><span style="color:var(--accent)">Material: ${data.mat}</span><br>${data.desc};
-}
-// Feature 2 Ledger Search Mock
-function checkLedger() {
-const code = document.getElementById('ledgerCode').value.trim().toUpperCase();
-const box = document.getElementById('ledgerResult');
-if(code === "CC-703") {
-box.innerHTML = "🟢 Artisan Allocated: Woven by Ramesh Murmu's cluster in West Bengal. 
-🕒 Time on Loom: 4 complete days.
-🌱 Footprint: Saved 120L of water via manual charkha spinning cycles.";
-} else {
-box.innerHTML = "ℹ️ Try typing code CC-703 for this demo preview profile tracking loop.";
-}
-}
-// Feature 4 Sound Bite Mock
-let audioContextMock = null;
-function toggleAudioMock(btn) {
-if(btn.innerText.includes("Play")) {
-btn.innerText = "⏸️ Pausing Loom Audio Simulation...";
-// Web Audio API engine loop to sound like an authentic wooden shuttle click
-if(!audioContextMock) audioContextMock = new (window.AudioContext || window.webkitAudioContext)();
-window.loomInterval = setInterval(() => {
-let osc = audioContextMock.createOscillator();
-let gain = audioContextMock.createGain();
-osc.type = 'triangle'; osc.frequency.setValueAtTime(80, audioContextMock.currentTime);
-gain.gain.setValueAtTime(0.3, audioContextMock.currentTime);
-gain.gain.exponentialRampToValueAtTime(0.01, audioContextMock.currentTime + 0.08);
-osc.connect(gain); gain.connect(audioContextMock.destination);
-osc.start(); osc.stop(audioContextMock.currentTime + 0.08);
-}, 750);
-} else {
-btn.innerText = "▶️ Play Rhythmic Handloom clicking sound";
-clearInterval(window.loomInterval);
-}
-}
-// Feature 5 Conversational Quiz Mechanics
-let quizState = 0;
-function nextQuizStep(ans) {
-if (quizState === 0) {
-quizState = 1;
-document.getElementById('quiz-question').innerText = "Choose your baseline height allocation framework:";
-document.getElementById('quiz-options-container').innerHTML = <button class="quiz-btn" onclick="nextQuizStep('Standard')">Petite / Standard Framework</button> <button class="quiz-btn" onclick="nextQuizStep('Tall')">Statuesque / Tall Silhouette Profile</button>;
-} else {
-document.getElementById('quiz-container').innerHTML = <h3>Profile Calculated</h3><p style="margin:10px 0;">Allocated Structure Cut: <strong>Size Medium (Relaxed Comfort Volume Block)</strong></p><button class="quiz-btn" onclick="location.reload()">Reset Fit Finder Quiz</button>;
-}
-}
-// Feature 6 Wardrobe Layer Switcher
-function changeCanvas(layer, name, color, element) {
-if (layer === 'top') {
-document.getElementById('top-layer').innerText = name;
-document.getElementById('top-layer').style.backgroundColor = color;
-} else {
-document.getElementById('bottom-layer').innerText = name;
-document.getElementById('bottom-layer').style.backgroundColor = color;
-}
-const siblings = element.parentNode.getElementsByClassName('item-thumb');
-for (let btn of siblings) btn.classList.remove('active');
-element.classList.add('active');
-}
-// Feature 8 Longevity Troubleshooter
-function runCareDiagnostic(val) {
-const res = document.getElementById('careResult');
-if(val === "fade") {
-res.innerHTML = "💡 Natural Indigo matures gracefully like denim. To lock color lines, wash cold inside-out with a teaspoon of rock salt during its initial rinse cycle.";
-} else if(val === "shrink") {
-res.innerHTML = "💡 Handwoven yarns relax under steam. Do not iron dry; hang dry slightly damp and steam lightly to bring back original loom width dimensions.";
-} else {
-res.innerHTML = "";
-}
-}
+    <script>
+        // PWA background link checking
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
+            });
+        }
+
+        let deferredPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+        function triggerCartFlow() {
+            document.getElementById('pwaModal').style.display = 'block';
+
+            if (isIOS) {
+                document.getElementById('pwa-instruction-text').innerHTML = 
+                    "Track your capsule selection instantly! Tap the <strong>Share icon</strong> <span style='font-size:1.2rem;'>⎋</span> at the bottom of Safari, then choose <strong>'Add to Home Screen'</strong>.";
+                document.getElementById('modal-action-btn').style.display = 'none';
+            }
+        }
+
+        function executePwaInstall() {
+            closePwaModal();
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+            } else {
+                alert("Capsule config cached! Pin via browser system shortcuts options.");
+            }
+        }
+
+        function closePwaModal() {
+            document.getElementById('pwaModal').style.display = 'none';
+        }
+
+        // Feature 1 Map Mechanics
+        const provinceData = {
+            bengal: { title: "West Bengal Weaver Loop", mat: "Sun-Dried Bengal Khadi", desc: "Hand-spun on wood charkhas. Uses zero electric grid power, yielding a highly irregular texture that lets skin breathe beautifully." },
+            bihar: { title: "Bhagalpur Artisans, Bihar", mat: "Organic Row Linen", desc: "Sourced cleanly from organic structural flax. Saves up to 80% more clean irrigation water compared to commercial-grade cotton lines." },
+            tamil: { title: "Temple Towns, Tamil Nadu", mat: "Generational South Cotton", desc: "Woven on robust local frame looms. Optimized directly for hot, high-humidity movement profiles and clean geometric falls." }
+        };
+
+        function showProvince(id) {
+            const data = provinceData[id];
+            document.getElementById('map-details-box').innerHTML = `<strong>${data.title}</strong><br><span style="color:var(--accent)">Material: ${data.mat}</span><br>${data.desc}`;
+        }
+
+        // Feature 2 Ledger Search Mock
+        function checkLedger() {
+            const code = document.getElementById('ledgerCode').value.trim().toUpperCase();
+            const box = document.getElementById('ledgerResult');
+            if(code === "CC-703") {
+                box.innerHTML = "🟢 <strong>Artisan Allocated:</strong> Woven by Ramesh Murmu's cluster in West Bengal. <br>🕒 <strong>Time on Loom:</strong> 4 complete days.<br>🌱 <strong>Footprint:</strong> Saved 120L of water via manual charkha spinning cycles.";
+            } else {
+                box.innerHTML = "ℹ️ Try typing code <strong>CC-703</strong> for this demo preview profile tracking loop.";
+            }
+        }
+
+        // Feature 4 Sound Bite Mock
+        let audioContextMock = null;
+        function toggleAudioMock(btn) {
+            if(btn.innerText.includes("Play")) {
+                btn.innerText = "⏸️ Pausing Loom Audio Simulation...";
+                if(!audioContextMock) audioContextMock = new (window.AudioContext || window.webkitAudioContext)();
+                window.loomInterval = setInterval(() => {
+                    let osc = audioContextMock.createOscillator();
+                    let gain = audioContextMock.createGain();
+                    osc.type = 'triangle'; osc.frequency.setValueAtTime(80, audioContextMock.currentTime);
+                    gain.gain.setValueAtTime(0.3, audioContextMock.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioContextMock.currentTime + 0.08);
+                    osc.connect(gain); gain.connect(audioContextMock.destination);
+                    osc.start(); osc.stop(audioContextMock.currentTime + 0.08);
+                }, 750);
+            } else {
+                btn.innerText = "▶️ Play Rhythmic Handloom clicking sound";
+                clearInterval(window.loomInterval);
+            }
+        }
+
+        // Feature 5 Conversational Quiz Mechanics
+        let quizState = 0;
+        function nextQuizStep(ans) {
+            if (quizState === 0) {
+                quizState = 1;
+                document.getElementById('quiz-question').innerText = "Choose your baseline height allocation framework:";
+                document.getElementById('quiz-options-container').innerHTML = `
+                    <button class="quiz-btn" onclick="nextQuizStep('Standard')">Petite to Standard Profile</button>
+                    <button class="quiz-btn" onclick="nextQuizStep('Tall')">Statuesque or Tall Silhouette Profile</button>
+                `;
+            } else {
+                document.getElementById('quiz-container').innerHTML = `<h3>Profile Calculated</h3><p style="margin:10px 0;">Allocated Structure Cut: <strong>Size Medium (Relaxed Comfort Volume Block)</strong></p><button class="quiz-btn" onclick="location.reload()">Reset Fit Finder Quiz</button>`;
+            }
+        }
+
+        // Feature 6 Wardrobe Layer Switcher
+        function changeCanvas(layer, name, color, element) {
+            if (layer === 'top') {
+                document.getElementById('top-layer').innerText = name;
+                document.getElementById('top-layer').style.backgroundColor = color;
+            } else {
+                document.getElementById('bottom-layer').innerText = name;
+                document.getElementById('bottom-layer').style.backgroundColor = color;
+            }
+            const siblings = element.parentNode.getElementsByClassName('item-thumb');
+            for (let btn of siblings) btn.classList.remove('active');
+            element.classList.add('active');
+        }
+
+        // Feature 8 Longevity Troubleshooter
+        function runCareDiagnostic(val) {
+            const res = document.getElementById('careResult');
+            if(val === "fade") {
+                res.innerHTML = "💡 Natural Indigo matures gracefully like denim. To lock color lines, wash cold inside-out with a teaspoon of rock salt during its initial rinse cycle.";
+            } else if(val === "shrink") {
+                res.innerHTML = "💡 Handwoven yarns relax under steam. Do not iron dry; hang dry slightly damp and steam lightly to bring back original loom width dimensions.";
+            } else {
+                res.innerHTML = "";
+            }
+        }
+    </script>
+</body>
+</html>
