@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cult & Clay Concept</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4A3E3D">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://placeholder.com">
+
+    <style>
+        :root {
+            --bg-color: #F9F6F0;
+            --primary: #4A3E3D;
+            --accent: #C4A484;
+            --text: #2C2523;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        header h1 {
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .pitch-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid #E5DEC9;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .feature-card h2 {
+            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent);
+            padding-left: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* Cart & PWA Trigger Area */
+        .cart-action-zone {
+            margin-top: 20px;
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px dashed #DDD;
+        }
+
+        .primary-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        .primary-btn:hover { opacity: 0.9; }
+
+        /* Custom Modern Modal for PWA prompt */
+        .pwa-modal {
+            display: none;
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: white;
+            padding: 25px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
+            z-index: 1000;
+            text-align: center;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; bottom: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 999;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: #777;
+            margin-top: 10px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* Wardrobe Layout */
+        .wardrobe-container { display: flex; flex-direction: column; gap: 20px; }
+        .selector-group h4 { margin-bottom: 8px; color: #666; font-size: 0.85rem; text-transform: uppercase; }
+        .item-thumb { display: inline-block; padding: 8px 14px; background: white; border: 1px solid #DDD; margin: 0 6px 8px 0; cursor: pointer; border-radius: 4px; }
+        .item-thumb.active { border-color: var(--primary); background: var(--primary); color: white; }
+        .wardrobe-canvas { height: 160px; background: #FDFDFD; border: 1px solid #E5DEC9; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+        .preview-layer { font-size: 1rem; font-weight: 500; padding: 10px; border-radius: 4px; width: 90%; text-align: center; }
+        #top-layer { background: #E8E2D5; color: var(--primary); }
+        #bottom-layer { background: #D9D2C5; color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Cult & Clay</h1>
+        <p>Conscious Capsule Engineering</p>
+    </header>
+
+    <div class="pitch-container">
+        <!-- CAPSULE BUILDER -->
+        <div class="feature-card">
+            <h2>Capsule Wardrobe Builder</h2>
+            <div class="wardrobe-container">
+                <div class="wardrobe-panel">
+                    <div class="selector-group">
+                        <h4>Select Top</h4>
+                        <div class="item-thumb active" onclick="changeCanvas('top', 'Nira Organic Khadi Kurta', '#E8E2D5', this)">Nira Khadi Kurta</div>
+                        <div class="item-thumb" onclick="changeCanvas('top', 'Vanya Crop Over-Shirt', '#EFEBE4', this)">Vanya Over-Shirt</div>
+                    </div>
+                    <div class="selector-group">
+                        <h4>Select Bottom</h4>
+                        <div class="item-thumb active" onclick="changeCanvas('bottom', 'Terracotta Everyday Trousers', '#D9D2C5', this)">Everyday Trousers</div>
+                        <div class="item-thumb" onclick="changeCanvas('bottom', 'South Cotton Lounge Pants', '#C4B9A3', this)">Lounge Pants</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-canvas">
+                    <div id="top-layer" class="preview-layer">Nira Organic Khadi Kurta</div>
+                    <div id="bottom-layer" class="preview-layer">Terracotta Everyday Trousers</div>
+                </div>
+
+                <div class="cart-action-zone">
+                    <button class="primary-btn" onclick="triggerCartFlow()">Add Capsule Selection to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACKGROUND BLUR OVERLAY -->
+    <div class="modal-overlay" id="overlay" onclick="closePwaModal()"></div>
+
+    <!-- SMART SMARTPHONE SMART PROMPT INTERFACE -->
+    <div class="pwa-modal" id="pwaModal">
+        <h3 style="color: var(--primary); margin-bottom: 8px;">🛒 Items Added to Cart!</h3>
+        <p id="pwa-instruction-text" style="font-size: 0.95rem; color: #444; margin-bottom: 20px;">
+            Would you like to save this custom capsule to your phone's home screen for quick offline order tracking?
+        </p>
+        <button class="primary-btn" id="modal-action-btn" onclick="executePwaInstall()">Save to Home Screen</button>
+        <br>
+        <button class="close-modal" onclick="closePwaModal()">No thanks, continue shopping</button>
+    </div>
+
+    <script>
+        // Service Worker setup loop
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
+            });
+        }
+
+        // Intercept native prompt configurations
+        let deferredPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e; // Store event data for later use
+        });
+
+        // Detect if user is accessing from iOS / iPhone
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+        function triggerCartFlow() {
+            // Show custom engagement drawer instantly on successful cart entry
+            document.getElementById('overlay').style.display = 'block';
+            const modal = document.getElementById('pwaModal');
+            modal.style.display = 'block';
+
+            // Personalise message copy specifically tailored to Apple environments if detected
+            if (isIOS) {
+                document.getElementById('pwa-instruction-text').innerHTML = 
+                    "Track this order seamlessly! Tap the <strong>Share icon</strong> <span style='font-size:1.2rem;'>⎋</span> at the bottom of Safari, then choose <strong>'Add to Home Screen'</strong>.";
+                document.getElementById('modal-action-btn').style.display = 'none'; // Hide native trigger
+            }
+        }
+
+        function executePwaInstall() {
+            closePwaModal();
+            // Fire native installation routine on Android environments
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+            } else {
+                alert("Capsule saved to browser storage! Pin it via browser settings.");
+            }
+        }
+
+        function closePwaModal() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('pwaModal').style.display = 'none';
+        }
+
+        function changeCanvas(layer, name, color, element) {
+            if (layer === 'top') {
+                document.getElementById('top-layer').innerText = name;
+                document.getElementById('top-layer').style.backgroundColor = color;
+            } else {
+                document.getElementById('bottom-layer').innerText = name;
+                document.getElementById('bottom-layer').style.backgroundColor = color;
+            }
+            const siblings = element.parentNode.getElementsByClassName('item-thumb');
+            for (let btn of siblings) btn.classList.remove('active');
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
