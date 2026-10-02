@@ -56,6 +56,18 @@
             margin-top: 4px;
         }
 
+        .pitch-banner {
+            background: #EAE3D2;
+            color: var(--primary);
+            padding: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid var(--accent);
+        }
+
         .pitch-container {
             max-width: 800px;
             margin: 0 auto;
@@ -98,30 +110,37 @@
             margin-bottom: 15px;
         }
 
-        /* 1. Map & Ledger */
-        .mock-map { background: #EAE3D2; height: 220px; border-radius: 6px; position: relative; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--primary); }
-        .map-pin { position: absolute; background: var(--primary); color: white; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; }
-        #pin-bengal { top: 45%; left: 70%; }
-        #pin-bihar { top: 35%; left: 55%; }
-        #pin-tamil { top: 75%; left: 45%; }
-        .map-details { background: var(--bg-color); padding: 12px; border-radius: 6px; min-height: 80px; margin-top: 12px; font-size: 0.95rem; }
+        .mock-map { 
+            background: #EAE3D2 url('https://wikimedia.org') no-repeat center; 
+            background-size: contain;
+            height: 250px; 
+            border-radius: 6px; 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border: 1px solid #DDD;
+        }
+        .map-pin { position: absolute; background: var(--primary); color: white; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        #pin-bengal { top: 45%; left: 62%; }
+        #pin-bihar { top: 38%; left: 58%; }
+        #pin-tamil { top: 78%; left: 45%; }
+        .map-details { background: var(--bg-color); padding: 12px; border-radius: 6px; min-height: 80px; margin-top: 12px; font-size: 0.95rem; border: 1px solid #E5DEC9; }
         
         .ledger-input-box { display: flex; gap: 8px; margin-top: 12px; }
         .ledger-input { flex: 1; padding: 10px; border: 1px solid var(--accent); border-radius: 4px; font-size: 0.9rem; background: var(--bg-color); color: var(--text); }
         .sm-btn { background: var(--primary); color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; }
 
-        /* 2. Audio & Visual Tactility */
         .tactile-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        .product-preview-box { position: relative; background: #ECE7E1; padding: 20px; border-radius: 6px; text-align: center; overflow: hidden; }
-        .zoom-img { width: 100%; max-width: 150px; transition: transform 0.3s ease; }
+        .product-preview-box { position: relative; background: #ECE7E1; padding: 20px; border-radius: 6px; text-align: center; overflow: hidden; border: 1px solid #E5DEC9; }
+        .zoom-img { width: 100%; max-width: 150px; border-radius: 4px; transition: transform 0.3s ease; }
         .product-preview-box:hover .zoom-img { transform: scale(1.6); }
         .tooltip-text { font-size: 0.85rem; background: var(--primary); color: white; padding: 8px; border-radius: 4px; margin-top: 10px; display: inline-block; }
         
-        .audio-player-box { background: var(--bg-color); padding: 15px; border-radius: 6px; text-align: center; }
+        .audio-player-box { background: var(--bg-color); padding: 15px; border-radius: 6px; text-align: center; border: 1px solid #E5DEC9; }
         .audio-btn { background: transparent; border: 1px solid var(--primary); padding: 8px 16px; border-radius: 20px; cursor: pointer; color: var(--primary); font-weight: 500; font-size: 0.85rem; margin-top: 8px; }
 
-        /* 3. Quiz & Capsule Builder */
-        .quiz-box { background: var(--bg-color); padding: 18px; border-radius: 6px; text-align: center; }
+        .quiz-box { background: var(--bg-color); padding: 18px; border-radius: 6px; text-align: center; border: 1px solid #E5DEC9; }
         .quiz-options { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
         .quiz-btn { background: white; border: 1px solid var(--accent); padding: 10px; border-radius: 6px; cursor: pointer; color: var(--primary); font-size: 0.95rem; }
         
@@ -135,13 +154,11 @@
         #bottom-layer { background: #D9D2C5; color: var(--primary); }
         .primary-btn { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 4px; font-weight: 600; cursor: pointer; width: 100%; font-size: 1rem; margin-top: 10px; }
 
-        /* 4. Community Dashboards */
         .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        .dash-box { background: var(--bg-color); padding: 15px; border-radius: 6px; }
+        .dash-box { background: var(--bg-color); padding: 15px; border-radius: 6px; border: 1px solid #E5DEC9; }
         .vote-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 8px; background: white; border-radius: 4px; border: 1px solid #E5DEC9; font-size: 0.9rem; }
         
-        /* Popup Modal Drawer */
-        .pwa-modal { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 25px; border-top-left-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 -5px 25px rgba(0,0,0,0.15); z-index: 1000; text-align: center; animation: slideUp 0.3s ease-out; }
+        .pwa-modal { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 25px; border-top-left-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 -5px 25px rgba(0,0,0,0.15); z-index: 1000; text-align: center; animation: slideUp 0.3s ease-out; border-top: 2px solid var(--accent); }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
         .modal-overlay { display: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.4); z-index: 999; }
         .close-modal { background: none; border: none; color: #777; margin-top: 15px; cursor: pointer; text-decoration: underline; font-size: 0.9rem; }
@@ -151,14 +168,16 @@
 
     <header>
         <h1>Cult & Clay</h1>
-        <p>Complete Digital Strategy Sandbox</p>
+        <p>Interactive Upgrade Concepts Case Study</p>
     </header>
 
+    <div class="pitch-banner">
+        💡 This page is a private, non-commercial structural layout built to demonstrate interactive upgrades to the founder.
+    </div>
+
     <div class="pitch-container">
-        
         <div class="section-heading">✨ Heritage Connection</div>
         
-        <!-- CONCEPT 1: PROVENANCE MAP -->
         <div class="feature-card">
             <h2>Interactive Transparency Map</h2>
             <p class="desc">Traces textiles directly back to local artisan production clusters.</p>
@@ -175,7 +194,6 @@
             </div>
         </div>
 
-        <!-- CONCEPT 2: MEET YOUR WEAVER LEDGER -->
         <div class="feature-card">
             <h2>"Meet Your Weaver" Ledger</h2>
             <p class="desc">Simulates typing in a physical garment batch tag code to find its maker.</p>
@@ -190,81 +208,101 @@
 
         <div class="section-heading">🧵 Tactility Alternative</div>
 
-        <!-- CONCEPT 3 & 4: MACRO HOVER-ZOOM & AUDIO TEXTURES -->
         <div class="feature-card">
             <h2>Digital Tactility Suite</h2>
             <div class="tactile-grid">
                 <div class="product-preview-box">
-                    <p style="font-size:0.8rem; color:#888; margin-bottom:5px;">Hover over box to simulate Macro Zoom:</p>
-                    <img src="https://placeholder.com" class="zoom-img" alt="Fabric Structure">
+                    <p style="font-size:0.8rem; color:#888; margin-bottom:10px;">Hover over box to simulate Macro Zoom:</p>
+                    <img src="https://unsplash.com" class="zoom-img" alt="Fabric Structure">
                     <br>
                     <div class="tooltip-text">Authentic, uneven yarn anomalies of hand-spun Khadi loom batches.</div>
-Use code with caution.
-Ambient Audio Textures
-Brings the sensory rhythm of standard traditional production loops to life.
-▶️ Play Rhythmic Handloom Sound
+                </div>
+                <div class="audio-player-box">
+                    <h4>Ambient Audio Textures</h4>
+                    <p style="font-size:0.8rem; color:#666; margin-bottom: 8px;">Brings the sensory rhythm of standard traditional production loops to life.</p>
+                    <button class="audio-btn" onclick="toggleAudioMock(this)">▶️ Play Rhythmic Handloom Sound</button>
+                </div>
+            </div>
+        </div>
 
+        <div class="section-heading">🛍️ Intentional Purchasing</div>
 
-🛍️ Intentional Purchasing
-The "Slow Living" Fit Finder
+        <div class="feature-card">
+            <h2>The "Slow Living" Fit Finder</h2>
+            <div class="quiz-box" id="quiz-container">
+                <h3 id="quiz-question" style="font-size:1.05rem; font-weight: 500;">How do you like traditional handwoven cotton to sit against your skin?</h3>
+                <div class="quiz-options" id="quiz-options-container">
+                    <button class="quiz-btn" onclick="nextQuizStep('Snug')">Snug & Structured</button>
+                    <button class="quiz-btn" onclick="nextQuizStep('Relaxed')">With Breathing Room</button>
+                    <button class="quiz-btn" onclick="nextQuizStep('Oversized')">Completely Voluminous & Flowing</button>
+                </div>
+            </div>
+        </div>
 
-How do you like traditional handwoven cotton to sit against your skin?
+        <div class="feature-card">
+            <h2>Capsule Wardrobe Builder</h2>
+            <div class="wardrobe-container">
+                <div class="wardrobe-panel">
+                    <div class="selector-group">
+                        <h4>Select Silhouette Top</h4>
+                        <div class="item-thumb active" onclick="changeCanvas('top', 'Nira Organic Khadi Kurta', '#E8E2D5', this)">Nira Khadi Kurta</div>
+                        <div class="item-thumb" onclick="changeCanvas('top', 'Vanya Crop Over-Shirt', '#EFEBE4', this)">Vanya Over-Shirt</div>
+                    </div>
+                    <div class="selector-group">
+                        <h4>Select Silhouette Bottom</h4>
+                        <div class="item-thumb active" onclick="changeCanvas('bottom', 'Terracotta Everyday Trousers', '#D9D2C5', this)">Everyday Trousers</div>
+                        <div class="item-thumb" onclick="changeCanvas('bottom', 'South Cotton Lounge Pants', '#C4B9A3', this)">Lounge Pants</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-canvas">
+                    <div id="top-layer" class="preview-layer">Nira Organic Khadi Kurta</div>
+                    <div id="bottom-layer" class="preview-layer">Terracotta Everyday Trousers</div>
+                </div>
 
-Snug & Structured
-With Breathing Room
-Completely Voluminous & Flowing
+                <div class="cart-action-zone">
+                    <button class="primary-btn" onclick="triggerCartFlow()">Add Capsule Selection to Cart</button>
+                </div>
+            </div>
+        </div>
 
+        <div class="section-heading">🌱 Zero-Waste Community</div>
 
-Capsule Wardrobe Builder
+        <div class="feature-card">
+            <h2>Community Co-Creation & Longevity Hub</h2>
+            <div class="dashboard-grid">
+                <div class="dash-box">
+                    <h4>Pre-Order & Voting Portal</h4>
+                    <p style="font-size:0.8rem; color:#666; margin-bottom: 8px;">Vote on future layout drops to eliminate deadstock fabric waste overhead loops.</p>
+                    <div class="vote-row"><span>Kala Cotton Slacks Indigo</span><button class="sm-btn" style="padding:4px 8px; font-size:0.75rem;" onclick="this.innerText='Voted (412)'">Vote (411)</button></div>
+                    <div class="vote-row"><span>Oversized Bihar Flax Tunic</span><button class="sm-btn" style="padding:4px 8px; font-size:0.75rem;" onclick="this.innerText='Voted (289)'">Vote (288)</button></div>
+                </div>
+                <div class="dash-box" style="margin-top: 15px;">
+                    <h4>Care & Repair Diagnostic Assistant</h4>
+                    <p style="font-size:0.8rem; color:#666; margin-bottom: 8px;">Select a situation to get immediate traditional textile longevity advice:</p>
+                    <select class="ledger-input" onchange="runCareDiagnostic(this.value)">
+                        <option value="">-- Select Fabric Situation --</option>
+                        <option value="fade">My indigo-dyed shirt has faded slightly</option>
+                        <option value="shrink">My organic Khadi felt tighter after washing</option>
+                    </select>
+                    <div id="careResult" style="margin-top:10px; font-size:0.85rem; color:var(--primary); font-style:italic;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal-overlay" id="overlay" onclick="closePwaModal()"></div>
 
-
-Select Silhouette Top
-Nira Khadi Kurta
-Vanya Over-Shirt
-
-
-Select Silhouette Bottom
-Everyday Trousers
-Lounge Pants
-
-Nira Organic Khadi Kurta
-Terracotta Everyday Trousers
-Add Capsule Selection to Cart
-
-
-🌱 Zero-Waste Community
-Community Co-Creation & Longevity Hub
-
-
-Pre-Order & Voting Portal
-Vote on future layout drops to eliminate deadstock fabric waste overhead loops.
-Kala Cotton Slacks IndigoVote (411)
-Oversized Bihar Flax TunicVote (288)
-
-
-Care & Repair Diagnostic Assistant
-Select a situation to get immediate traditional textile longevity advice:
-
--- Select Fabric Situation --
-My indigo-dyed shirt has faded slightly
-My organic Khadi felt tighter after washing
-
-
-
-
-
-🛒 Layout Added to Cart!
-
-Would you like to save this custom capsule config right onto your phone's home screen for effortless offline tracking?
-
-Save to Home Screen
-
-
-No thanks, continue shopping
-```html
+    <div class="pwa-modal" id="pwaModal">
+        <h3 style="color: var(--primary); margin-bottom: 8px;">🛒 Layout Added to Cart!</h3>
+        <p id="pwa-instruction-text" style="font-size: 0.95rem; color: #444; margin-bottom: 20px;">
+            Would you like to save this custom capsule config right onto your phone's home screen for effortless offline tracking?
+        </p>
+        <button class="primary-btn" id="modal-action-btn" onclick="executePwaInstall()">Save to Home Screen</button>
+        <br>
+        <button class="close-modal" onclick="closePwaModal()">No thanks, continue shopping</button>
+    </div>
     <script>
-        // PWA service worker lifecycle setup 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
@@ -279,7 +317,7 @@ No thanks, continue shopping
 
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-        function triggerCartFlow() {
+        fn = function triggerCartFlow() {
             document.getElementById('overlay').style.display = 'block';
             document.getElementById('pwaModal').style.display = 'block';
 
@@ -289,8 +327,9 @@ No thanks, continue shopping
                 document.getElementById('modal-action-btn').style.display = 'none';
             }
         }
+        window.triggerCartFlow = fn;
 
-        function executePwaInstall() {
+        fn2 = function executePwaInstall() {
             closePwaModal();
             if (deferredPrompt) {
                 deferredPrompt.prompt();
@@ -299,26 +338,26 @@ No thanks, continue shopping
                 alert("Capsule config cached! Pin via browser system shortcuts options.");
             }
         }
+        window.executePwaInstall = fn2;
 
-        function closePwaModal() {
+        fn3 = function closePwaModal() {
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('pwaModal').style.display = 'none';
         }
+        window.closePwaModal = fn3;
 
-        // Map Mechanics Engine
         const provinceData = {
             bengal: { title: "West Bengal Weaver Cluster", mat: "Sun-Dried Bengal Khadi", desc: "Hand-spun on wood charkhas. Uses zero electric grid power, yielding a highly irregular texture that lets skin breathe beautifully." },
             bihar: { title: "Bhagalpur Artisans, Bihar", mat: "Organic Raw Linen", desc: "Sourced cleanly from organic structural flax. Saves up to 80% more clean irrigation water compared to commercial-grade cotton lines." },
             tamil: { title: "Temple Towns, Tamil Nadu", mat: "Generational South Cotton", desc: "Woven on robust local frame looms. Optimized directly for hot, high-humidity movement profiles and clean geometric falls." }
         };
 
-        function showProvince(id) {
+        window.showProvince = function(id) {
             const data = provinceData[id];
             document.getElementById('map-details-box').innerHTML = `<strong>${data.title}</strong><br><span style="color:var(--accent)">Material: ${data.mat}</span><br>${data.desc}`;
         }
 
-        // Weaver Ledger Search Mechanics
-        function checkLedger() {
+        window.checkLedger = function() {
             const code = document.getElementById('ledgerCode').value.trim().toUpperCase();
             const box = document.getElementById('ledgerResult');
             if(code === "CC-703") {
@@ -328,9 +367,8 @@ No thanks, continue shopping
             }
         }
 
-        // Sound Engine Mechanics
         let audioContextMock = null;
-        function toggleAudioMock(btn) {
+        window.toggleAudioMock = function(btn) {
             if(btn.innerText.includes("Play")) {
                 btn.innerText = "⏸️ Pausing Loom Sound...";
                 if(!audioContextMock) audioContextMock = new (window.AudioContext || window.webkitAudioContext)();
@@ -349,9 +387,8 @@ No thanks, continue shopping
             }
         }
 
-        // Quiz Mechanics
         let quizState = 0;
-        function nextQuizStep(ans) {
+        window.nextQuizStep = function(ans) {
             if (quizState === 0) {
                 quizState = 1;
                 document.getElementById('quiz-question').innerText = "Choose your baseline height allocation framework:";
@@ -364,8 +401,7 @@ No thanks, continue shopping
             }
         }
 
-        // Capsule Switcher Mechanics
-        function changeCanvas(layer, name, color, element) {
+        window.changeCanvas = function(layer, name, color, element) {
             if (layer === 'top') {
                 document.getElementById('top-layer').innerText = name;
                 document.getElementById('top-layer').style.backgroundColor = color;
@@ -378,8 +414,7 @@ No thanks, continue shopping
             element.classList.add('active');
         }
 
-        // Care System Diagnostics
-        function runCareDiagnostic(val) {
+        window.runCareDiagnostic = function(val) {
             const res = document.getElementById('careResult');
             if(val === "fade") {
                 res.innerHTML = "💡 Natural Indigo matures gracefully like denim. To lock color lines, wash cold inside-out with a teaspoon of rock salt during its initial rinse cycle.";
