@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cult & Clay Concept Sandbox</title>
+    <title>Cult & Clay — Premium Digital Strategy Concept</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4A3E3D">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,189 +12,175 @@
 
     <style>
         :root {
-            --bg-color: #F9F6F0;
-            --primary: #4A3E3D;
+            --bg-color: #FDFBF7;
+            --primary: #2C2523;
             --accent: #C4A484;
-            --text: #2C2523;
+            --text: #3D3533;
             --card-bg: #FFFFFF;
+            --border-light: #EAE3D2;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            letter-spacing: 0.5px;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text);
             line-height: 1.6;
-            padding: 15px;
-            padding-bottom: 60px;
+            padding-bottom: 80px;
         }
 
-        header {
+        .announcement-bar {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            font-size: 0.75rem;
             text-align: center;
-            margin-bottom: 25px;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--accent);
-        }
-
-        header h1 {
-            font-weight: 300;
-            letter-spacing: 4px;
-            color: var(--primary);
-            text-transform: uppercase;
-            font-size: 1.8rem;
-        }
-
-        header p {
-            font-style: italic;
-            color: #666;
-            font-size: 0.95rem;
-            margin-top: 4px;
-        }
-
-        .pitch-banner {
-            background: #EAE3D2;
-            color: var(--primary);
-            padding: 10px;
-            text-align: center;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            border: 1px solid var(--accent);
-        }
-
-        .pitch-container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .section-heading {
-            text-align: center;
-            color: #777;
-            font-size: 0.85rem;
+            padding: 8px 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-top: 10px;
-            border-bottom: 1px dashed #DDD;
-            padding-bottom: 5px;
+            font-weight: 500;
         }
 
-        .feature-card {
-            background: var(--card-bg);
-            border: 1px solid #E5DEC9;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        nav {
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-light);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
         }
 
-        .feature-card h2 {
-            font-weight: 400;
+        .nav-left, .nav-right { display: flex; align-items: center; gap: 15px; }
+        .menu-toggle, .search-icon, .cart-icon { cursor: pointer; font-size: 1.1rem; color: var(--primary); }
+        
+        .brand-logo {
+            font-weight: 300;
+            letter-spacing: 5px;
             color: var(--primary);
-            margin-bottom: 12px;
-            border-left: 4px solid var(--accent);
-            padding-left: 10px;
-            font-size: 1.25rem;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            text-decoration: none;
         }
 
-        p.desc {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 15px;
+        .currency-select {
+            border: none;
+            background: transparent;
+            font-size: 0.8rem;
+            color: var(--text);
+            cursor: pointer;
+            outline: none;
         }
 
-        .mock-map { 
-            background: #FFFFFF url('india-map.png') no-repeat center; 
-            background-size: contain;
-            height: 250px;
-            max-width: 300px;
+        .hero-section {
+            background-color: #F4EFE6;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .hero-card {
+            background: var(--primary);
+            color: #FFFFFF;
+            max-width: 550px;
             margin: 0 auto;
-            position: relative; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            border: 1px solid #E5DEC9;
-            border-radius: 6px;
+            padding: 30px 20px;
+            border-radius: 4px;
         }
-        .map-pin { 
-            position: absolute; 
-            background: var(--primary); 
-            color: white; 
-            width: 30px; 
-            height: 30px; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            cursor: pointer; 
-            font-size: 1rem; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
-            z-index: 10;
-        }
-        #pin-bengal { top: 46%; left: 70%; }
-        #pin-bihar { top: 38%; left: 58%; }
-        #pin-tamil { top: 78%; left: 38%; }
-        .map-details { background: var(--bg-color); padding: 12px; border-radius: 6px; min-height: 80px; margin-top: 12px; font-size: 0.95rem; border: 1px solid #E5DEC9; }
+
+        .hero-card h2 { font-weight: 300; font-size: 1.35rem; letter-spacing: 1px; margin-bottom: 12px; line-height: 1.4; }
+        .hero-card p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 18px; }
+        .hero-btn { background: #FFFFFF; color: var(--primary); border: none; padding: 10px 24px; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; cursor: pointer; }
+
+        .pitch-container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 35px; }
+        .section-heading { text-align: center; color: var(--primary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; margin-top: 10px; border-bottom: 1px solid var(--accent); padding-bottom: 8px; font-weight: 600; }
+        .feature-card { background: var(--card-bg); border: 1px solid var(--border-light); border-radius: 4px; padding: 24px; }
+        .feature-card h2 { font-weight: 400; color: var(--primary); margin-bottom: 12px; font-size: 1.2rem; }
+        p.desc { font-size: 0.85rem; color: #666; margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 10px; }
+
+        .mock-map { background: #FFFFFF url('india-map.png') no-repeat center; background-size: contain; height: 260px; position: relative; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-light); border-radius: 4px; }
+        .map-pin { position: absolute; background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
         
+        #pin-bengal { top: 46%; left: 58%; }
+        #pin-bihar { top: 38%; left: 54%; }
+        #pin-tamil { top: 78%; left: 42%; }
+        
+        .map-details { background: var(--bg-color); padding: 15px; border-radius: 4px; min-height: 80px; margin-top: 15px; font-size: 0.9rem; border: 1px solid var(--border-light); }
         .ledger-input-box { display: flex; gap: 8px; margin-top: 12px; }
-        .ledger-input { flex: 1; padding: 10px; border: 1px solid var(--accent); border-radius: 4px; font-size: 0.9rem; background: var(--bg-color); color: var(--text); }
-        .sm-btn { background: var(--primary); color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; }
+        .ledger-input { flex: 1; padding: 10px; border: 1px solid var(--accent); border-radius: 4px; font-size: 0.9rem; background: var(--bg-color); color: var(--primary); }
+        .sm-btn { background: var(--primary); color: white; border: none; padding: 10px 18px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; text-transform: uppercase; }
 
-        .tactile-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        .product-preview-box { position: relative; background: #ECE7E1; padding: 20px; border-radius: 6px; text-align: center; overflow: hidden; border: 1px solid #E5DEC9; }
-        .zoom-img { width: 100%; max-width: 150px; border-radius: 4px; transition: transform 0.3s ease; }
-        .product-preview-box:hover .zoom-img { transform: scale(1.6); }
-        .tooltip-text { font-size: 0.85rem; background: var(--primary); color: white; padding: 8px; border-radius: 4px; margin-top: 10px; display: inline-block; }
+        .tactile-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .product-preview-box { position: relative; background: #FAF8F5; padding: 25px; border-radius: 4px; text-align: center; overflow: hidden; border: 1px solid var(--border-light); }
+        .zoom-img { width: 100%; max-width: 160px; border-radius: 4px; transition: transform 0.4s ease; }
+        .product-preview-box:hover .zoom-img { transform: scale(1.5); }
+        .tooltip-text { font-size: 0.8rem; background: var(--primary); color: white; padding: 8px 12px; border-radius: 4px; margin-top: 15px; display: inline-block; }
         
-        .audio-player-box { background: var(--bg-color); padding: 15px; border-radius: 6px; text-align: center; border: 1px solid #E5DEC9; }
-        .audio-btn { background: transparent; border: 1px solid var(--primary); padding: 8px 16px; border-radius: 20px; cursor: pointer; color: var(--primary); font-weight: 500; font-size: 0.85rem; margin-top: 8px; }
+        .audio-player-box { background: #FAF8F5; padding: 20px; border-radius: 4px; text-align: center; border: 1px solid var(--border-light); }
+        .audio-btn { background: transparent; border: 1px solid var(--primary); padding: 10px 20px; border-radius: 20px; cursor: pointer; color: var(--primary); font-size: 0.8rem; margin-top: 10px; text-transform: uppercase; }
 
-        .quiz-box { background: var(--bg-color); padding: 18px; border-radius: 6px; text-align: center; border: 1px solid #E5DEC9; }
-        .quiz-options { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-        .quiz-btn { background: white; border: 1px solid var(--accent); padding: 10px; border-radius: 6px; cursor: pointer; color: var(--primary); font-size: 0.95rem; }
+        .quiz-box { background: #FAF8F5; padding: 20px; border-radius: 4px; text-align: center; border: 1px solid var(--border-light); }
+        .quiz-options { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .quiz-btn { background: white; border: 1px solid var(--accent); padding: 12px; border-radius: 4px; cursor: pointer; color: var(--primary); font-size: 0.9rem; }
         
-        .wardrobe-container { display: flex; flex-direction: column; gap: 15px; }
-        .selector-group h4 { margin-bottom: 6px; color: #666; font-size: 0.8rem; text-transform: uppercase; }
-        .item-thumb { display: inline-block; padding: 6px 12px; background: white; border: 1px solid #DDD; margin: 0 4px 6px 0; cursor: pointer; border-radius: 4px; font-size: 0.85rem; }
+        .wardrobe-container { display: flex; flex-direction: column; gap: 20px; }
+        .selector-group h4 { margin-bottom: 8px; color: #777; font-size: 0.75rem; text-transform: uppercase; }
+        .item-thumb { display: inline-block; padding: 8px 14px; background: white; border: 1px solid #DDD; margin: 0 6px 8px 0; cursor: pointer; border-radius: 4px; font-size: 0.85rem; }
         .item-thumb.active { border-color: var(--primary); background: var(--primary); color: white; }
-        .wardrobe-canvas { height: 140px; background: #FDFDFD; border: 1px solid #E5DEC9; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-        .preview-layer { font-size: 0.95rem; font-weight: 500; padding: 8px; border-radius: 4px; width: 85%; text-align: center; }
+        .wardrobe-canvas { height: 160px; background: #FDFDFD; border: 1px solid var(--border-light); border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+        .preview-layer { font-size: 0.9rem; font-weight: 500; padding: 10px; border-radius: 4px; width: 85%; text-align: center; }
         #top-layer { background: #E8E2D5; color: var(--primary); }
         #bottom-layer { background: #D9D2C5; color: var(--primary); }
-        .primary-btn { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 4px; font-weight: 600; cursor: pointer; width: 100%; font-size: 1rem; margin-top: 10px; }
+        .primary-btn { background: var(--primary); color: white; border: none; padding: 14px; border-radius: 2px; font-weight: 600; cursor: pointer; width: 100%; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
 
-        .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        .dash-box { background: var(--bg-color); padding: 15px; border-radius: 6px; border: 1px solid #E5DEC9; }
-        .vote-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 8px; background: white; border-radius: 4px; border: 1px solid #E5DEC9; font-size: 0.9rem; }
+        .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .dash-box { background: #FAF8F5; padding: 20px; border-radius: 4px; border: 1px solid var(--border-light); }
+        .vote-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding: 10px; background: white; border-radius: 4px; border: 1px solid var(--border-light); font-size: 0.85rem; }
         
-        .pwa-modal { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 25px; border-top-left-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 -5px 25px rgba(0,0,0,0.15); z-index: 1000; text-align: center; animation: slideUp 0.3s ease-out; border-top: 2px solid var(--accent); }
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        .modal-overlay { display: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.4); z-index: 999; }
-        .close-modal { background: none; border: none; color: #777; margin-top: 15px; cursor: pointer; text-decoration: underline; font-size: 0.9rem; }
+        .pwa-modal { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 30px 25px; border-top-left-radius: 16px; border-top-right-radius: 16px; box-shadow: 0 -8px 30px rgba(0,0,0,0.12); z-index: 1000; text-align: center; border-top: 3px solid var(--primary); }
+        .modal-overlay { display: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); z-index: 999; }
+        .close-modal { background: none; border: none; color: #888; margin-top: 15px; cursor: pointer; text-decoration: underline; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Cult & Clay</h1>
-        <p>Interactive Upgrade Concepts Case Study</p>
-    </header>
+    <div class="announcement-bar">
+        Free International Shipping on Orders Over $250
+    </div>
 
-    <div class="pitch-banner">
-        💡 This page is a private, non-commercial structural layout built to demonstrate interactive upgrades to the founder.
+    <nav>
+        <div class="nav-left">
+            <span class="menu-toggle">☰</span>
+            <span class="search-icon">🔍</span>
+        </div>
+        <a href="#" class="brand-logo">Cult & Clay</a>
+        <div class="nav-right">
+            <select class="currency-select">
+                <option>India (INR ₹)</option>
+                <option>United States (USD $)</option>
+            </select>
+            <span class="cart-icon">👜 <small id="cart-count">(0)</small></span>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="hero-card">
+            <h2>Rooted in India. Made for the world. Worn without explanation.</h2>
+            <p>Just a life, lived with more care.</p>
+            <button class="hero-btn" onclick="document.getElementById('capsule-builder').scrollIntoView({behavior: 'smooth'});">Shop The Collection</button>
+        </div>
     </div>
 
     <div class="pitch-container">
         <div class="section-heading">✨ Heritage Connection</div>
         
-        <!-- PITCH FEATURE 1: VALUE-CHAIN PROVENANCE MAP -->
         <div class="feature-card">
             <h2>Artisan Footprint Hub</h2>
             <p class="desc">Interactive Traceability Matrix: Click any active sourcing pin below to trace the transparent ecosystem, local weaving communities, and ecological impact behind your garment.</p>
@@ -210,62 +196,64 @@
                 </div>
             </div>
         </div>
+
         <div class="feature-card">
-            <h2>"Meet Your Weaver" Ledger</h2>
-            <p class="desc">Simulates typing in a physical garment batch tag code to find its maker.</p>
+            <h2>"Meet Your Weaver" Verification Portal</h2>
+            <p class="desc">Enter the unique code stamped on your garment tag to track the handloom workshop batch statistics.</p>
             <div class="ledger-box">
                 <div class="ledger-input-box">
-                    <input type="text" id="ledgerCode" class="ledger-input" placeholder="Try entering batch code: CC-703">
-                    <button class="sm-btn" onclick="checkLedger()">Trace</button>
+                    <input type="text" id="ledgerCode" class="ledger-input" placeholder="Enter tag code (e.g., CC-703)">
+                    <button class="sm-btn" onclick="checkLedger()">Verify</button>
                 </div>
-                <div id="ledgerResult" style="margin-top:10px; font-size:0.9rem;"></div>
+                <div id="ledgerResult" style="margin-top:12px; font-size:0.85rem; line-height: 1.5;"></div>
             </div>
         </div>
 
         <div class="section-heading">🧵 Tactility Alternative</div>
 
         <div class="feature-card">
-            <h2>Digital Tactility Suite</h2>
+            <h2>Digital Tactility Interface</h2>
             <div class="tactile-grid">
                 <div class="product-preview-box">
-                    <p style="font-size:0.8rem; color:#888; margin-bottom:10px;">Hover over box to simulate Macro Zoom:</p>
+                    <p style="font-size:0.8rem; color:#666; margin-bottom:12px;">Hover / Long-press image to activate Macro Zoom:</p>
                     <img src="https://unsplash.com" class="zoom-img" alt="Organic Khadi Fabric Structure">
                     <br>
-                    <div class="tooltip-text">Authentic, uneven yarn anomalies of hand-spun Khadi loom batches.</div>
+                    <div class="tooltip-text">Hallmark uneven yarn anomalies of genuine hand-spun Bengal Khadi.</div>
                 </div>
                 <div class="audio-player-box">
                     <h4>Ambient Audio Textures</h4>
-                    <p style="font-size:0.8rem; color:#666; margin-bottom: 8px;">Brings the sensory rhythm of standard traditional production loops to life.</p>
-                    <button class="audio-btn" onclick="toggleAudioMock(this)">▶️ Play Rhythmic Handloom Sound</button>
+                    <p style="font-size:0.8rem; color:#666; margin-bottom: 10px;">Connect seamlessly with the real sounds of generational wooden frame looms.</p>
+                    <button class="audio-btn" onclick="toggleAudioMock(this)">▶️ Stream Handloom Acoustics</button>
                 </div>
             </div>
         </div>
-
         <div class="section-heading">🛍️ Intentional Purchasing</div>
 
         <div class="feature-card">
-            <h2>The "Slow Living" Fit Finder</h2>
+            <h2>The "Slow Living" Silhouette Finder</h2>
+            <p class="desc">Replaces mathematical grids with style preference volume metrics to minimize shipping returns.</p>
             <div class="quiz-box" id="quiz-container">
-                <h3 id="quiz-question" style="font-size:1.05rem; font-weight: 500;">How do you like traditional handwoven cotton to sit against your skin?</h3>
+                <h3 id="quiz-question" style="font-size:1rem; font-weight: 500;">How do you prefer traditional handwoven cotton to drape on your framework?</h3>
                 <div class="quiz-options" id="quiz-options-container">
-                    <button class="quiz-btn" onclick="nextQuizStep('Snug')">Snug & Structured</button>
-                    <button class="quiz-btn" onclick="nextQuizStep('Relaxed')">With Breathing Room</button>
+                    <button class="quiz-btn" onclick="nextQuizStep('Snug')">Snug & Tailored Structure</button>
+                    <button class="quiz-btn" onclick="nextQuizStep('Relaxed')">Relaxed with Breathing Room</button>
                     <button class="quiz-btn" onclick="nextQuizStep('Oversized')">Completely Voluminous & Flowing</button>
                 </div>
             </div>
         </div>
 
-        <div class="feature-card">
-            <h2>Capsule Wardrobe Builder</h2>
+        <div class="feature-card" id="capsule-builder">
+            <h2>Zero-Waste Capsule Wardrobe Engine</h2>
+            <p class="desc">Layer minimal cuts side-by-side to construct a conscious lifestyle canvas before purchase.</p>
             <div class="wardrobe-container">
                 <div class="wardrobe-panel">
                     <div class="selector-group">
-                        <h4>Select Silhouette Top</h4>
+                        <h4>Select Base Layer Top</h4>
                         <div class="item-thumb active" onclick="changeCanvas('top', 'Nira Organic Khadi Kurta', '#E8E2D5', this)">Nira Khadi Kurta</div>
                         <div class="item-thumb" onclick="changeCanvas('top', 'Vanya Crop Over-Shirt', '#EFEBE4', this)">Vanya Over-Shirt</div>
                     </div>
-                    <div class="selector-group">
-                        <h4>Select Silhouette Bottom</h4>
+                    <div class="selector-group" style="margin-top: 10px;">
+                        <h4>Select Base Layer Bottom</h4>
                         <div class="item-thumb active" onclick="changeCanvas('bottom', 'Terracotta Everyday Trousers', '#D9D2C5', this)">Everyday Trousers</div>
                         <div class="item-thumb" onclick="changeCanvas('bottom', 'South Cotton Lounge Pants', '#C4B9A3', this)">Lounge Pants</div>
                     </div>
@@ -277,7 +265,7 @@
                 </div>
 
                 <div class="cart-action-zone">
-                    <button class="primary-btn" onclick="triggerCartFlow()">Add Capsule Selection to Cart</button>
+                    <button class="primary-btn" onclick="triggerCartFlow()">Add Selection to Wardrobe Cart</button>
                 </div>
             </div>
         </div>
@@ -285,23 +273,23 @@
         <div class="section-heading">🌱 Zero-Waste Community</div>
 
         <div class="feature-card">
-            <h2>Community Co-Creation & Longevity Hub</h2>
+            <h2>Co-Creation & Garment Longevity Index</h2>
             <div class="dashboard-grid">
                 <div class="dash-box">
-                    <h4>Pre-Order & Voting Portal</h4>
-                    <p style="font-size:0.8rem; color:#666; margin-bottom: 8px;">Vote on future layout drops to eliminate deadstock fabric waste overhead loops.</p>
-                    <div class="vote-row"><span>Kala Cotton Slacks Indigo</span><button class="sm-btn" style="padding:4px 8px; font-size:0.75rem;" onclick="this.innerText='Voted (412)'">Vote (411)</button></div>
-                    <div class="vote-row"><span>Oversized Bihar Flax Tunic</span><button class="sm-btn" style="padding:4px 8px; font-size:0.75rem;" onclick="this.innerText='Voted (289)'">Vote (288)</button></div>
+                    <h4>Pre-Order Batch Demand Voting</h4>
+                    <p style="font-size:0.8rem; color:#666; margin-bottom: 8px;">Vote on upcoming textile weaves to ensure zero deadstock fabric production overhead.</p>
+                    <div class="vote-row"><span>Generational Indigo Kala Cotton Slacks</span><button class="sm-btn" style="padding:5px 10px; font-size:0.75rem;" onclick="this.innerText='Voted (412)'">Vote (411)</button></div>
+                    <div class="vote-row"><span>Oversized Bihar Flax Tunic Block</span><button class="sm-btn" style="padding:5px 10px; font-size:0.75rem;" onclick="this.innerText='Voted (289)'">Vote (288)</button></div>
                 </div>
-                <div class="dash-box" style="margin-top: 15px;">
-                    <h4>Care & Repair Diagnostic Assistant</h4>
-                    <p style="font-size:0.8rem; color:#666; margin-bottom: 8px;">Select a situation to get immediate traditional textile longevity advice:</p>
-                    <select class="ledger-input" onchange="runCareDiagnostic(this.value)">
-                        <option value="">-- Select Fabric Situation --</option>
-                        <option value="fade">My indigo-dyed shirt has faded slightly</option>
-                        <option value="shrink">My organic Khadi felt tighter after washing</option>
+                <div class="dash-box">
+                    <h4>Longevity & Care Troubleshooter</h4>
+                    <p style="font-size:0.8rem; color:#666; margin-bottom: 10px;">Select a specific fabric behavior for traditional storage guidance:</p>
+                    <select class="ledger-input" style="width: 100%; border-radius: 4px;" onchange="runCareDiagnostic(this.value)">
+                        <option value="">-- Choose Fabric Condition --</option>
+                        <option value="fade">My naturally dyed indigo item shows tonal shading changes</option>
+                        <option value="shrink">My raw Khadi weave compacted slightly after home washing</option>
                     </select>
-                    <div id="careResult" style="margin-top:10px; font-size:0.85rem; color:var(--primary); font-style:italic;"></div>
+                    <div id="careResult" style="margin-top:12px; font-size:0.85rem; color:var(--primary); font-style:italic; line-height: 1.5;"></div>
                 </div>
             </div>
         </div>
@@ -310,13 +298,13 @@
     <div class="modal-overlay" id="overlay" onclick="closePwaModal()"></div>
 
     <div class="pwa-modal" id="pwaModal">
-        <h3 style="color: var(--primary); margin-bottom: 8px;">🛒 Layout Added to Cart!</h3>
-        <p id="pwa-instruction-text" style="font-size: 0.95rem; color: #444; margin-bottom: 20px;">
-            Would you like to save this custom capsule config right onto your phone's home screen for effortless offline tracking?
+        <h3 style="color: var(--primary); margin-bottom: 10px; font-weight: 500;">👜 Added to Conscious Wardrobe Stack!</h3>
+        <p id="pwa-instruction-text" style="font-size: 0.85rem; color: #555; margin-bottom: 20px; line-height: 1.5;">
+            Would you like to install the Cult & Clay tracking companion directly to your home screen for immediate offline order logs and sizing history?
         </p>
-        <button class="primary-btn" id="modal-action-btn" onclick="executePwaInstall()">Save to Home Screen</button>
+        <button class="primary-btn" id="modal-action-btn" onclick="executePwaInstall()">Save Tracking Companion</button>
         <br>
-        <button class="close-modal" onclick="closePwaModal()">No thanks, continue shopping</button>
+        <button class="close-modal" onclick="closePwaModal()">Continue shopping on standard web portal</button>
     </div>
     <script>
         if ('serviceWorker' in navigator) {
@@ -333,9 +321,10 @@
 
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-        fn = function triggerCartFlow() {
+        window.triggerCartFlow = function() {
             document.getElementById('overlay').style.display = 'block';
             document.getElementById('pwaModal').style.display = 'block';
+            document.getElementById('cart-count').innerText = "(1)";
 
             if (isIOS) {
                 document.getElementById('pwa-instruction-text').innerHTML = 
@@ -343,29 +332,26 @@
                 document.getElementById('modal-action-btn').style.display = 'none';
             }
         }
-        window.triggerCartFlow = fn;
 
-        fn2 = function executePwaInstall() {
+        window.executePwaInstall = function() {
             closePwaModal();
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
             } else {
-                alert("Capsule config cached! Pin via browser system shortcuts options.");
+                alert("Capsule companion app configuration cached successfully inside browser memory paths!");
             }
         }
-        window.executePwaInstall = fn2;
 
-        fn3 = function closePwaModal() {
+        window.closePwaModal = function() {
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('pwaModal').style.display = 'none';
         }
-        window.closePwaModal = fn3;
 
         const provinceData = {
             bengal: { title: "West Bengal Weaver Cluster", mat: "Sun-Dried Bengal Khadi", desc: "Hand-spun on wood charkhas. Uses zero electric grid power, yielding a highly irregular texture that lets skin breathe beautifully." },
-            bihar: { title: "Bhagalpur Hub, Bihar", mat: "Organic Raw Linen", desc: "Cleanly extracted flax crops from local floodplains. Saves up to 80% more clean irrigation water compared to commercial-grade cotton lines." },
-            tamil: { title: "Temple Regions, Tamil Nadu", mat: "Premium South Cotton", desc: "Generational frame-loom weaves optimized for crisp drapes, longevity, and high daily physical mobility." }
+            bihar: { title: "Bhagalpur Artisans, Bihar", mat: "Organic Raw Linen", desc: "Sourced cleanly from organic structural flax fields. Saves up to 80% more clean irrigation water compared to commercial cotton paths." },
+            tamil: { title: "Temple Towns, Tamil Nadu", mat: "Generational South Cotton", desc: "Woven on robust local frame looms. Optimized directly for hot, high-humidity movement profiles and clean geometric falls." }
         };
 
         window.showProvince = function(id) {
@@ -377,16 +363,16 @@
             const code = document.getElementById('ledgerCode').value.trim().toUpperCase();
             const box = document.getElementById('ledgerResult');
             if(code === "CC-703") {
-                box.innerHTML = "🟢 <strong>Artisan Allocated:</strong> Woven by Ramesh Murmu's cluster in West Bengal. <br>🕒 <strong>Time on Loom:</strong> 4 complete days.<br>🌱 <strong>Footprint:</strong> Saved 120L of water via manual charkha spinning cycles.";
+                box.innerHTML = "🟢 <strong>Artisan Profile:</strong> Ramesh Murmu's handloom group, Murshidabad.<br>🕒 <strong>Loom Metrics:</strong> 4 days structural hand-weaving process cycles.<br>🌱 <strong>Ecological Data:</strong> 120 Liters of water preserved via low-emission charkha operations.";
             } else {
-                box.innerHTML = "ℹ️ Try typing code <strong>CC-703</strong> for this demo preview profile tracking loop.";
+                box.innerHTML = "ℹ️ Tag code unverified. Please enter sample identifier code <strong>CC-703</strong> to test the verification pipeline lookup module.";
             }
         }
 
         let audioContextMock = null;
         window.toggleAudioMock = function(btn) {
-            if(btn.innerText.includes("Play")) {
-                btn.innerText = "⏸️ Pausing Loom Sound...";
+            if(btn.innerText.includes("Stream")) {
+                btn.innerText = "⏸️ Mute Acoustics";
                 if(!audioContextMock) audioContextMock = new (window.AudioContext || window.webkitAudioContext)();
                 window.loomInterval = setInterval(() => {
                     let osc = audioContextMock.createOscillator();
@@ -398,7 +384,7 @@
                     osc.start(); osc.stop(audioContextMock.currentTime + 0.08);
                 }, 750);
             } else {
-                btn.innerText = "▶️ Play Rhythmic Handloom Sound";
+                btn.innerText = "▶️ Stream Handloom Acoustics";
                 clearInterval(window.loomInterval);
             }
         }
@@ -407,13 +393,13 @@
         window.nextQuizStep = function(ans) {
             if (quizState === 0) {
                 quizState = 1;
-                document.getElementById('quiz-question').innerText = "Choose your baseline height allocation framework:";
+                document.getElementById('quiz-question').innerText = "Choose your baseline height allocation metric framework:";
                 document.getElementById('quiz-options-container').innerHTML = `
-                    <button class="quiz-btn" onclick="nextQuizStep('Standard')">Petite to Standard Framework</button>
-                    <button class="quiz-btn" onclick="nextQuizStep('Tall')">Statuesque or Tall Silhouette Profile</button>
+                    <button class="quiz-btn" onclick="nextQuizStep('Standard')">Petite / Standard Profile Block</button>
+                    <button class="quiz-btn" onclick="nextQuizStep('Tall')">Statuesque / Tall Alignment Block</button>
                 `;
             } else {
-                document.getElementById('quiz-container').innerHTML = `<h3>Profile Calculated</h3><p style="margin:10px 0;">Allocated Structure Cut: <strong>Size Medium (Relaxed Comfort Volume Block)</strong></p><button class="quiz-btn" onclick="location.reload()">Reset Fit Finder Quiz</button>`;
+                document.getElementById('quiz-container').innerHTML = `<h3>Profile Assigned Successfully</h3><p style="margin:12px 0; font-size: 0.95rem;">Recommended Silhouette Selection: <strong>Size Medium (${ans} Profile Cut Block)</strong></p><button class="primary-btn" style="padding:6px 12px; font-size:0.8rem;" onclick="location.reload()">Re-test Profile Matrix</button>`;
             }
         }
 
@@ -433,9 +419,9 @@
         window.runCareDiagnostic = function(val) {
             const res = document.getElementById('careResult');
             if(val === "fade") {
-                res.innerHTML = "💡 Natural Indigo matures gracefully like denim. To lock color lines, wash cold inside-out with a teaspoon of rock salt during its initial rinse cycle.";
+                res.innerHTML = "💡 Natural Indigo matures beautifully like raw denim. To stabilize early shading values, wash cold inside-out with a teaspoon of natural rock salt during its initial cleaning cycles.";
             } else if(val === "shrink") {
-                res.innerHTML = "💡 Handwoven yarns relax under steam. Do not iron dry; hang dry slightly damp and steam lightly to bring back original loom width dimensions.";
+                res.innerHTML = "💡 Pure handwoven fibers naturally compact and expand with moisture conditions. Avoid hot machine drying parameters; simply hang dry damp and iron under medium steam to return items to original loom shapes.";
             } else {
                 res.innerHTML = "";
             }
