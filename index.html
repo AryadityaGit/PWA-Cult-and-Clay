@@ -49,6 +49,13 @@
             font-size: 1.8rem;
         }
 
+        header p {
+            font-style: italic;
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
         .pitch-container {
             max-width: 800px;
             margin: 0 auto;
@@ -100,15 +107,15 @@
         .map-details { background: var(--bg-color); padding: 12px; border-radius: 6px; min-height: 80px; margin-top: 12px; font-size: 0.95rem; }
         
         .ledger-input-box { display: flex; gap: 8px; margin-top: 12px; }
-        .ledger-input { flex: 1; padding: 10px; border: 1px solid var(--accent); border-radius: 4px; font-size: 0.9rem; background: var(--bg-color); }
+        .ledger-input { flex: 1; padding: 10px; border: 1px solid var(--accent); border-radius: 4px; font-size: 0.9rem; background: var(--bg-color); color: var(--text); }
         .sm-btn { background: var(--primary); color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; }
 
         /* 2. Audio & Visual Tactility */
         .tactile-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        .product-preview-box { position: relative; background: #ECE7E1; padding: 20px; border-radius: 6px; text-align: center; overflow: hidden; cursor: crosshair; }
+        .product-preview-box { position: relative; background: #ECE7E1; padding: 20px; border-radius: 6px; text-align: center; overflow: hidden; }
         .zoom-img { width: 100%; max-width: 150px; transition: transform 0.3s ease; }
-        .product-preview-box:hover .zoom-img { transform: scale(1.8); }
-        .tooltip-text { font-size: 0.8rem; background: var(--primary); color: white; padding: 6px; border-radius: 4px; margin-top: 10px; display: inline-block; }
+        .product-preview-box:hover .zoom-img { transform: scale(1.6); }
+        .tooltip-text { font-size: 0.85rem; background: var(--primary); color: white; padding: 8px; border-radius: 4px; margin-top: 10px; display: inline-block; }
         
         .audio-player-box { background: var(--bg-color); padding: 15px; border-radius: 6px; text-align: center; }
         .audio-btn { background: transparent; border: 1px solid var(--primary); padding: 8px 16px; border-radius: 20px; cursor: pointer; color: var(--primary); font-weight: 500; font-size: 0.85rem; margin-top: 8px; }
@@ -188,16 +195,14 @@
             <h2>Digital Tactility Suite</h2>
             <div class="tactile-grid">
                 <div class="product-preview-box">
-                    <p style="font-size:0.8rem; color:#888; margin-bottom:5px;">Hover / Touch hold to experience Macro Zoom:</p>
-                    <img src="https://placeholder.com Bengal+Khadi" class="zoom-img" alt="Fabric Structure">
+                    <p style="font-size:0.8rem; color:#888; margin-bottom:5px;">Hover over box to simulate Macro Zoom:</p>
+                    <img src="https://placeholder.com" class="zoom-img" alt="Fabric Structure">
                     <br>
                     <div class="tooltip-text">Authentic, uneven yarn anomalies of hand-spun Khadi loom batches.</div>
-                </div>
-                <div class="audio-player-box">
-                    <h4>Ambient Audio Textures</h4>
 Use code with caution.
+Ambient Audio Textures
 Brings the sensory rhythm of standard traditional production loops to life.
-▶️ Play Rhythmic Handloom clicking sound
+▶️ Play Rhythmic Handloom Sound
 
 
 🛍️ Intentional Purchasing
@@ -248,6 +253,7 @@ My organic Khadi felt tighter after washing
 
 
 
+
 🛒 Layout Added to Cart!
 
 Would you like to save this custom capsule config right onto your phone's home screen for effortless offline tracking?
@@ -256,8 +262,9 @@ Save to Home Screen
 
 
 No thanks, continue shopping
+```html
     <script>
-        // PWA background link checking
+        // PWA service worker lifecycle setup 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
@@ -273,6 +280,7 @@ No thanks, continue shopping
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
         function triggerCartFlow() {
+            document.getElementById('overlay').style.display = 'block';
             document.getElementById('pwaModal').style.display = 'block';
 
             if (isIOS) {
@@ -293,13 +301,14 @@ No thanks, continue shopping
         }
 
         function closePwaModal() {
+            document.getElementById('overlay').style.display = 'none';
             document.getElementById('pwaModal').style.display = 'none';
         }
 
-        // Feature 1 Map Mechanics
+        // Map Mechanics Engine
         const provinceData = {
-            bengal: { title: "West Bengal Weaver Loop", mat: "Sun-Dried Bengal Khadi", desc: "Hand-spun on wood charkhas. Uses zero electric grid power, yielding a highly irregular texture that lets skin breathe beautifully." },
-            bihar: { title: "Bhagalpur Artisans, Bihar", mat: "Organic Row Linen", desc: "Sourced cleanly from organic structural flax. Saves up to 80% more clean irrigation water compared to commercial-grade cotton lines." },
+            bengal: { title: "West Bengal Weaver Cluster", mat: "Sun-Dried Bengal Khadi", desc: "Hand-spun on wood charkhas. Uses zero electric grid power, yielding a highly irregular texture that lets skin breathe beautifully." },
+            bihar: { title: "Bhagalpur Artisans, Bihar", mat: "Organic Raw Linen", desc: "Sourced cleanly from organic structural flax. Saves up to 80% more clean irrigation water compared to commercial-grade cotton lines." },
             tamil: { title: "Temple Towns, Tamil Nadu", mat: "Generational South Cotton", desc: "Woven on robust local frame looms. Optimized directly for hot, high-humidity movement profiles and clean geometric falls." }
         };
 
@@ -308,7 +317,7 @@ No thanks, continue shopping
             document.getElementById('map-details-box').innerHTML = `<strong>${data.title}</strong><br><span style="color:var(--accent)">Material: ${data.mat}</span><br>${data.desc}`;
         }
 
-        // Feature 2 Ledger Search Mock
+        // Weaver Ledger Search Mechanics
         function checkLedger() {
             const code = document.getElementById('ledgerCode').value.trim().toUpperCase();
             const box = document.getElementById('ledgerResult');
@@ -319,11 +328,11 @@ No thanks, continue shopping
             }
         }
 
-        // Feature 4 Sound Bite Mock
+        // Sound Engine Mechanics
         let audioContextMock = null;
         function toggleAudioMock(btn) {
             if(btn.innerText.includes("Play")) {
-                btn.innerText = "⏸️ Pausing Loom Audio Simulation...";
+                btn.innerText = "⏸️ Pausing Loom Sound...";
                 if(!audioContextMock) audioContextMock = new (window.AudioContext || window.webkitAudioContext)();
                 window.loomInterval = setInterval(() => {
                     let osc = audioContextMock.createOscillator();
@@ -335,19 +344,19 @@ No thanks, continue shopping
                     osc.start(); osc.stop(audioContextMock.currentTime + 0.08);
                 }, 750);
             } else {
-                btn.innerText = "▶️ Play Rhythmic Handloom clicking sound";
+                btn.innerText = "▶️ Play Rhythmic Handloom Sound";
                 clearInterval(window.loomInterval);
             }
         }
 
-        // Feature 5 Conversational Quiz Mechanics
+        // Quiz Mechanics
         let quizState = 0;
         function nextQuizStep(ans) {
             if (quizState === 0) {
                 quizState = 1;
                 document.getElementById('quiz-question').innerText = "Choose your baseline height allocation framework:";
                 document.getElementById('quiz-options-container').innerHTML = `
-                    <button class="quiz-btn" onclick="nextQuizStep('Standard')">Petite to Standard Profile</button>
+                    <button class="quiz-btn" onclick="nextQuizStep('Standard')">Petite to Standard Framework</button>
                     <button class="quiz-btn" onclick="nextQuizStep('Tall')">Statuesque or Tall Silhouette Profile</button>
                 `;
             } else {
@@ -355,7 +364,7 @@ No thanks, continue shopping
             }
         }
 
-        // Feature 6 Wardrobe Layer Switcher
+        // Capsule Switcher Mechanics
         function changeCanvas(layer, name, color, element) {
             if (layer === 'top') {
                 document.getElementById('top-layer').innerText = name;
@@ -369,7 +378,7 @@ No thanks, continue shopping
             element.classList.add('active');
         }
 
-        // Feature 8 Longevity Troubleshooter
+        // Care System Diagnostics
         function runCareDiagnostic(val) {
             const res = document.getElementById('careResult');
             if(val === "fade") {
