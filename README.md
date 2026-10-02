@@ -13,7 +13,7 @@ An interactive, high-intent Progressive Web App (PWA) prototype engineered for t
 This repository acts as a live sandboxed pitch to demonstrate how introducing **digital tactility** and **event-deferred native app experiences** can dramatically increase digital engagement while lowering size-related e-commerce return blocks.
 
 ## 🚀 Live Interactive Link
-👉 **[INSERT YOUR LIVE GITHUB PAGES LINK HERE]** *(Open this link on your smartphone to test the native app saving mechanism!)*
+👉 **https://aryadityagit.github.io/PWA-Cult-and-Clay/** *(Open this link on your smartphone to test the native app saving mechanism!)*
 
 ## 🛠️ Key Architectural Innovations Included
 1. **Interactive Textile Provenance Map:** Bridges the digital divide by tracing Bengal Khadi, Raw Linen, and South Cotton back to specific generational artisan loops.
